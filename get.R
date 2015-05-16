@@ -3,12 +3,21 @@ library(dplyr)
 library(tidyr)
 
 get_movie_reviews <- function(){
-  data <- readLines("data/movies.txt", n = 10)
+  data <- readLines("data/movies.txt", n = 1000)
   data <- data.frame(text = data) 
-  data$text <- as.character(data$text)
-  data <- filter(data, text != "")
   data <- data %>%
-            separate(text, c("key", "value"), sep = "^[^:]+:\\s*", error = "drop")
+            mutate(text = as.character(text)) %>%
+            filter(nchar(text) > 0)
+
+  d <- data %>%
+        extract(text, into=c('key', 'value'), '(.*):\\s+(.*)+')
   
-  gsub("/^(.+?):", "!@!", data$text) # This needs help.
+  index <- 0
+  d$id <- 0
+  for(i in 1:nrow(d)){
+    if(d$key[[i]] == "product/productId"){
+      index <- index + 1
+    }
+    d$id[[i]] <- index
+  }
 }
