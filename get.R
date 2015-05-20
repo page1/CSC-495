@@ -3,7 +3,8 @@ library(dplyr)
 library(tidyr)
 
 get_movie_reviews <- function(n = 1000){
-  data <- readLines("data/movies.txt", n = n)
+  data <- readLines(con <- gzfile("data/movies.txt.gz", encoding = "latin1"), n = n)
+  close(con)
   data <- data.frame(text = data) 
   data <- data %>%
             mutate(text = as.character(text)) %>%
