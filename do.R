@@ -1,6 +1,7 @@
 # Run all the other files with functions here
 source("get.R")
 source("munge.R")
+source("analyze.R")
 library(sand)
 
 main <- function(){
