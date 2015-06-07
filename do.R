@@ -26,6 +26,10 @@ main <- function(){
     full_graph1999 <- make_review_graph(data1999)
     projection1999 <- make_movie_movie_projection(full_graph1999)
     
+    #Attach the review scores to the projection
+    projection1998 = attach_review_score(projection1998,data1998)
+    projection1999 = attach_review_score(projection1999,data1999)
+    
     # Dump Movie ID's
     V(projection1998)$degree_strength <- graph.strength(projection1998)
     V(projection1999)$degree_strength <- graph.strength(projection1999)
@@ -33,21 +37,22 @@ main <- function(){
     write.csv(V(projection1999)$name[V(projection1999)$degree_strength > 5000], file = "data/1999.csv")
     
     # Write Graph Files
-    write.graph(projection1998, file = "data/movie_movie_projection1998.net", format = "pajek")
-    write.graph(projection1999, file = "data/movie_movie_projection1999.net", format = "pajek")
+    write.graph(projection1998, file = "data/movie_movie_projection1998.graphml", format = "graphml")
+    write.graph(projection1999, file = "data/movie_movie_projection1999.graphml", format = "graphml")
     
     # Save Graphs for analysis
     save(projection1998, projection1999, file = projection_Rdata_file)
   }
   
-  descriptive_Rdata_file <- "data/projection_descriptions.Rdata"
-  if(file.exists(descriptive_Rdata_file)){
-    load(descriptive_Rdata_file)
-  } else {
-    description_1998 <- compute_descriptive_stats(projection1998)
-    description_1999 <- compute_descriptive_stats(projection1998)
-    save(description_1998, description_1999, file = projection_Rdata_file)
-  }
+  #descriptive_Rdata_file <- "data/projection_descriptions.Rdata"
+  #if(file.exists(descriptive_Rdata_file)){
+  #  load(descriptive_Rdata_file)
+  #} else {
+  #  description_1998 <- compute_descriptive_stats(projection1998)
+  #  description_1999 <- compute_descriptive_stats(projection1998)
+  #  save(description_1998, description_1999, file = projection_Rdata_file)
+  #}
+
   
   return(NULL)
 }
