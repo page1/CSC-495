@@ -19,3 +19,19 @@ trim_low_graph_strength <- function(graph, min_graph_strength = 10){
   
   return(graph)
 }
+
+attach_review_score <- function(graph,data){
+  
+  d = data %>% 
+    group_by(product.productId) %>%
+    summarize(mean_score = mean(review.score))
+  
+  for(v in V(graph)){
+    name <- get.vertex.attribute(graph, "name", v)
+    if (length(name) != 0)
+    {
+      graph <- set.vertex.attribute(graph, "review", v, d$mean_score[which(d$product.productId == name)])
+    }
+  }
+  return(graph)
+}
