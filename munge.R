@@ -22,7 +22,7 @@ trim_low_graph_strength <- function(graph, min_graph_strength = 10){
 
 attach_review_score <- function(graph,data){
   
-  d = data %>% 
+  d <- data %>% 
     group_by(product.productId) %>%
     summarize(mean_score = mean(review.score))
   

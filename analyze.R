@@ -5,12 +5,14 @@ compute_descriptive_stats <- function(graph){
   degree_dist <- degree(graph)
   degree_strength <- graph.strength(graph)
   evcentrality <- evcent(graph)$vector
-  closeness <- closeness.estimate(graph, cutoff = 20)
+  #closeness <- closeness.estimate(graph, cutoff = 20)
+  
+  transitivity <- transitivity(graph, type="local")
   
   return(list(degree_dist,
               degree_strength,
               evcentrality,
-              closeness))
+              transitivity))
 }
 
 make_plots <- function(graph){
