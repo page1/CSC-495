@@ -35,3 +35,21 @@ attach_review_score <- function(graph,data){
   }
   return(graph)
 }
+
+remove_dups <- function(graph){
+  nodes_check_sum <- lapply(V(graph), function(x){
+    data.frame(sum = sum(neighbors(graph, x, mode = 1)) + x, 
+               node = x)
+  }) %>%do.call("rbind", .)
+  
+  unique_nodes <- nodes_check_sum %>%
+    group_by(sum) %>%
+    mutate(row_n = row_number()) %>%
+    filter(row_n == 1)
+  
+  not_in_set <- V(graph)[!(V(graph) %in% unique_nodes$node)]
+  new_graph <- delete.vertices(graph, not_in_set)
+  new_graph <- delete.vertices(new_graph, degree(new_graph) == 0)
+  
+  return(new_graph)
+}
