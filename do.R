@@ -50,7 +50,7 @@ main <- function(){
   } else {
     description_1998 <- compute_descriptive_stats(projection1998)
     description_1999 <- compute_descriptive_stats(projection1999)
-    save(description_1998, description_1999, file = projection_Rdata_file)
+    save(description_1998, description_1999, file = descriptive_Rdata_file)
   }
 
   
