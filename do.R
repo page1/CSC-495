@@ -5,13 +5,13 @@ source("analyze.R")
 library(sand)
 
 main <- function(){
-  Rdata_file <- "data/movie_movie_projection.Rdata"
+  projection_Rdata_file <- "data/movie_movie_projection.Rdata"
   
   projection1998 <- NULL
   projection1999 <- NULL
   
-  if(file.exists(Rdata_file)){
-    load(Rdata_file)
+  if(file.exists(projection_Rdata_file)){
+    load(projection_Rdata_file)
   } else {
     data <- get_min_movie_reviews()
     data$review.time <- as.Date(as.POSIXlt(as.numeric(data$review.time), origin = "1960-01-01"))
@@ -27,19 +27,27 @@ main <- function(){
     projection1999 <- make_movie_movie_projection(full_graph1999)
     
     # Dump Movie ID's
-    write.csv(V(projection1998)$name, file = "data/1998.csv")
-    write.csv(V(projection1999)$name, file = "data/1999.csv")
+    V(projection1998)$degree_strength <- graph.strength(projection1998)
+    V(projection1999)$degree_strength <- graph.strength(projection1999)
+    write.csv(V(projection1998)$name[V(projection1998)$degree_strength > 5000], file = "data/1998.csv")
+    write.csv(V(projection1999)$name[V(projection1999)$degree_strength > 5000], file = "data/1999.csv")
     
     # Write Graph Files
     write.graph(projection1998, file = "data/movie_movie_projection1998.net", format = "pajek")
     write.graph(projection1999, file = "data/movie_movie_projection1999.net", format = "pajek")
     
     # Save Graphs for analysis
-    save(projection1998, projection1999, file = Rdata_file)
+    save(projection1998, projection1999, file = projection_Rdata_file)
   }
   
-  make_plots(projection1998)
-  make_plots(projection1999)
+  descriptive_Rdata_file <- "data/projection_descriptions.Rdata"
+  if(file.exists(descriptive_Rdata_file)){
+    load(descriptive_Rdata_file)
+  } else {
+    description_1998 <- compute_descriptive_stats(projection1998)
+    description_1999 <- compute_descriptive_stats(projection1998)
+    save(description_1998, description_1999, file = projection_Rdata_file)
+  }
   
   return(NULL)
 }

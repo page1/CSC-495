@@ -1,0 +1,72 @@
+---
+title: "Movie Review Appendix"
+output: html_document
+---
+
+```{r include=FALSE}
+source("analyze.R")
+projection_Rdata_file <- "data/movie_movie_projection.Rdata"
+load(projection_Rdata_file)
+descriptive_Rdata_file <- "data/projection_descriptions.Rdata"
+load(descriptive_Rdata_file)
+```
+
+# 1998 Analysis
+
+```{r}
+hist(description_1998$degree_dist,
+       main = "Degree Distribution",
+       xlab = "Degree",
+       breaks = 100)
+```
+
+```{r}
+hist(description_1998$degree_strength,
+       main = "Degree Strength Distribution",
+       xlab = "Degree Strength",
+       breaks = 100)
+```
+
+```{r}
+hist(description_1998$evcentrality,
+       main = "Eigenvector Centrality Distribution",
+       xlab = "Eigenvector Centrality",
+       breaks = 100)
+```
+
+```{r}
+hist(description_1998$closeness,
+       main = "Closeness Distribution",
+       xlab = "Closeness",
+       breaks = 100)
+```
+
+# 1999 Analysis
+
+```{r}
+hist(description_1999$degree_dist,
+       main = "Degree Distribution",
+       xlab = "Degree",
+       breaks = 100)
+```
+
+```{r}
+hist(description_1999$degree_strength,
+       main = "Degree Strength Distribution",
+       xlab = "Degree Strength",
+       breaks = 100)
+```
+
+```{r}
+hist(description_1999$evcentrality,
+       main = "Eigenvector Centrality Distribution",
+       xlab = "Eigenvector Centrality",
+       breaks = 100)
+```
+
+```{r}
+hist(description_1999$closeness,
+       main = "Closeness Distribution",
+       xlab = "Closeness",
+       breaks = 100)
+```

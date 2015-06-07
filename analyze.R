@@ -1,6 +1,18 @@
 # Analyze the data with functions here
 library(sand)
 
+compute_descriptive_stats <- function(graph){
+  degree_dist <- degree(graph)
+  degree_strength <- graph.strength(graph)
+  evcentrality <- evcent(graph)$vector
+  closeness <- closeness.estimate(graph, cutoff = 20)
+  
+  return(list(degree_dist,
+              degree_strength,
+              evcentrality,
+              closeness))
+}
+
 make_plots <- function(graph){
   par(mfrow=c(2,2))
   hist(degree(graph),
