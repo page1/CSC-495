@@ -18,9 +18,4 @@ make_plots <- function(graph){
        xlab = "Eigenvector",
        breaks = 100)
   par(mfrow=c(1,1))
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> 059a4177e96adf173704e26d1da39ebae6826481
