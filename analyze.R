@@ -19,3 +19,4 @@ make_plots <- function(graph){
        breaks = 100)
   par(mfrow=c(1,1))
 }
+

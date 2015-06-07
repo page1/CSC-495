@@ -18,5 +18,7 @@ main <- function(){
   
   write.graph(projection, file = "data/movie_movie_projection.graphml", format = "graphml")
   
+  make_plots(projection)
+  
   return(NULL)
 }
