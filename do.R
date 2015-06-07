@@ -1,10 +1,11 @@
 # Run all the other files with functions here
 source("get.R")
 source("munge.R")
+source("analyze.R")
 library(sand)
 
 main <- function(){
-  Rdata_file <- "data/movie_movie_projection1999.Rdata"
+  Rdata_file <- "data/movie_movie_projection.Rdata"
   
   if(file.exists(Rdata_file)){
     load(Rdata_file)
@@ -21,13 +22,27 @@ main <- function(){
     projection1998 <- make_movie_movie_projection(full_graph1998)
     full_graph1999 <- make_review_graph(data1999)
     projection1999 <- make_movie_movie_projection(full_graph1999)
-    save(projection, file = Rdata_file)
+    save(projection1998, projection1999, file = Rdata_file)
   }
   
-  write.graph(projection, file = "data/movie_movie_projection.net", format = "pajek")
+  write.graph(projection1998, file = "data/movie_movie_projection1998.net", format = "pajek")
+  write.graph(projection1999, file = "data/movie_movie_projection1999.net", format = "pajek")
   
   make_plots(projection1998)
   make_plots(projection1999)
   
   return(NULL)
 }
+=======
+    full_graph <- make_review_graph(data)
+    projection <- make_movie_movie_projection(full_graph)
+    save(projection, file = Rdata_file)
+  }
+  
+  write.graph(projection, file = "data/movie_movie_projection.graphml", format = "graphml")
+  
+  make_plots(projection)
+  
+  return(NULL)
+}
+>>>>>>> 059a4177e96adf173704e26d1da39ebae6826481
