@@ -13,9 +13,8 @@ vignettes/*.html
 vignettes/*.pdf
 .Rproj.user
 
+*.RData
 *.Rdata
-<<<<<<< HEAD
 *.RdataTmp
 
-=======
->>>>>>> 059a4177e96adf173704e26d1da39ebae6826481
+
