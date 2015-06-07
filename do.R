@@ -33,8 +33,8 @@ main <- function(){
     # Dump Movie ID's
     V(projection1998)$degree_strength <- graph.strength(projection1998)
     V(projection1999)$degree_strength <- graph.strength(projection1999)
-    write.csv(V(projection1998)$name[V(projection1998)$degree_strength > 5000], file = "data/1998.csv")
-    write.csv(V(projection1999)$name[V(projection1999)$degree_strength > 5000], file = "data/1999.csv")
+    write.csv(V(projection1998)$name[V(projection1998)$degree_strength > 20], file = "data/1998.csv")
+    write.csv(V(projection1999)$name[V(projection1999)$degree_strength > 20], file = "data/1999.csv")
     
     # Write Graph Files
     write.graph(projection1998, file = "data/movie_movie_projection1998.graphml", format = "graphml")
