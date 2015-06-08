@@ -36,6 +36,19 @@ attach_review_score <- function(graph,data){
   return(graph)
 }
 
+attach_nice_name <- function(graph,nice_name){
+  for(v in V(graph)){
+    name <- get.vertex.attribute(graph, "name", v)
+    if (length(name) != 0 && length(which(nice_name[,2] == name)) != 0)
+    {
+      graph <- set.vertex.attribute(graph, "nice_name", v, nice_name[which(nice_name[,2] == name),3])
+    }
+  }
+  
+  V(graph)$nice_name[is.na(V(graph)$nice_name)] <- ""
+  return(graph)
+}
+
 remove_dups <- function(graph){
   nodes_check_sum <- lapply(V(graph), function(x){
     data.frame(sum = sum(neighbors(graph, x, mode = 1)) + x, 

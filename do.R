@@ -34,6 +34,11 @@ main <- function(){
     projection1998 <- attach_review_score(projection1998, data1998)
     projection2000 <- attach_review_score(projection2000, data2000)
     
+    nice_names1998 <- read.csv("data/1998-Filtered-Titles.csv", header = F)
+    nice_names1998$V2 <- as.character(nice_names1998$V2)
+    nice_names1998$V3 <- as.character(nice_names1998$V3)
+    projection1998 <- attach_nice_name(projection1998, nice_names1998)
+    
     # Dump Movie ID's
     V(projection1998)$degree_strength <- graph.strength(projection1998)
     V(projection2000)$degree_strength <- graph.strength(projection2000)

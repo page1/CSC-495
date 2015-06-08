@@ -11,7 +11,7 @@ descriptive_Rdata_file <- "data/projection_descriptions.Rdata"
 load(descriptive_Rdata_file)
 ```
 
-# 1998 Analysis
+# 1998 & 2000 Analysis
 
 ```{r}
 summary(projection1998)
@@ -52,42 +52,42 @@ hist(description_1998$transitivity,
        breaks = 100)
 ```
 
-# 1999 Analysis
+# 2000 Analysis
 
 ```{r}
-summary(projection1999)
+summary(projection2000)
 ```
 
 ```{r}
-hist(description_1999$degree_dist,
+hist(description_2000$degree_dist,
        main = "Degree Distribution",
        xlab = "Degree",
        breaks = 100)
 ```
 
 ```{r}
-hist(description_1999$degree_strength,
+hist(description_2000$degree_strength,
        main = "Degree Strength Distribution",
        xlab = "Degree Strength",
        breaks = 100)
 ```
 
 ```{r}
-hist(description_1999$evcentrality,
+hist(description_2000$evcentrality,
        main = "Eigenvector Centrality Distribution",
        xlab = "Eigenvector Centrality",
        breaks = 100)
 ```
 
 ```{r}
-hist(description_1999$closeness,
+hist(description_2000$closeness,
        main = "Closeness Distribution",
        xlab = "Closeness",
        breaks = 100)
 ```
 
 ```{r}
-hist(description_1999$transitivity,
+hist(description_2000$transitivity,
        main = "Transitivity Distribution",
        xlab = "Transitivity",
        breaks = 100)
