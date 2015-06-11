@@ -25,7 +25,6 @@ main <- function(){
     projection1998 <- make_movie_movie_projection(full_graph1998)
     projection1998 <- remove_dups(projection1998)
     
-    
     full_graph2000 <- make_review_graph(data2000)
     projection2000 <- make_movie_movie_projection(full_graph2000)
     projection2000 <- remove_dups(projection2000)
@@ -34,18 +33,25 @@ main <- function(){
     projection1998 <- attach_review_score(projection1998, data1998)
     projection2000 <- attach_review_score(projection2000, data2000)
     
-    nice_names1998 <- read.csv("data/1998-Filtered-Titles.csv", header = F)
-    nice_names1998$V2 <- as.character(nice_names1998$V2)
-    nice_names1998$V3 <- as.character(nice_names1998$V3)
-    projection1998 <- attach_nice_name(projection1998, nice_names1998)
-    
-    # Dump Movie ID's
+    # Dump Movie ID's for Java code to extract movie names from amazon
     V(projection1998)$degree_strength <- graph.strength(projection1998)
     V(projection2000)$degree_strength <- graph.strength(projection2000)
     write.csv(V(projection1998)$name[V(projection1998)$degree_strength > 20], file = "data/1998.csv")
     write.csv(V(projection2000)$name[V(projection2000)$degree_strength > 20], file = "data/2000.csv")
     
-    # Write Graph Files
+    movie_names_file <- "data/1998-Filtered-Titles.csv"
+    if(file.exists(movie_names_file)){
+      # Take the movie names from java and attach them to the nodes
+      nice_names1998 <- read.csv(movie_names_file, header = F) 
+      nice_names1998$V2 <- as.character(nice_names1998$V2)
+      nice_names1998$V3 <- as.character(nice_names1998$V3)
+      projection1998 <- attach_nice_name(projection1998, nice_names1998)
+    }
+    else{
+      print(paste(movie_names_file, "not found - could not attach movie names"))
+    }
+    
+    # Write Graph Files for Gephi
     write.graph(projection1998, file = "data/movie_movie_projection1998.graphml", format = "graphml")
     write.graph(projection2000, file = "data/movie_movie_projection2000.graphml", format = "graphml")
     

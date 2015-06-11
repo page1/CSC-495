@@ -21,7 +21,6 @@ trim_low_graph_strength <- function(graph, min_graph_strength = 10){
 }
 
 attach_review_score <- function(graph,data){
-  
   d <- data %>% 
     group_by(product.productId) %>%
     summarize(mean_score = mean(review.score))
@@ -33,6 +32,7 @@ attach_review_score <- function(graph,data){
       graph <- set.vertex.attribute(graph, "review", v, d$mean_score[which(d$product.productId == name)])
     }
   }
+  
   return(graph)
 }
 
@@ -46,6 +46,7 @@ attach_nice_name <- function(graph,nice_name){
   }
   
   V(graph)$nice_name[is.na(V(graph)$nice_name)] <- ""
+  
   return(graph)
 }
 
