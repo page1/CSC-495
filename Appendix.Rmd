@@ -223,21 +223,27 @@ Plot of the 1999-2000 projection, next to the projection of movie reviews taken 
 Due to the large number of movies, in the early exploration we looked at graphs like these then looked up ID's -> Movies
 
 **1998 - 2000 Sized & Colored by # of Triangles Formed**
+Image of movies of final dataset colored and sized by number of triangles. A spline scaling method was used for the node sizing as there was a huge difference between the small nodes (barely visible) and large nodes. The spline allowed the clusters to form nicely while still showing the very small relationships through auxilery nodes.
 ![](img/Movies 1999 - Size and Color by number of traingles.png)
 
 **1998 - 2000 Sized & Colored by Degree Strength**
+Early exploration of visualizing the graph, nodes are colored and sized by degree. One of the last visualizations before modularity was used for coloring and revealed the real groupings.
 ![](img/Movies 1999- color and size by degree strength.png)
 
 **1998 - 2000 Sized & Colored Closeness**
+Movies colored and sized by closeness, the same spline scaling was used during this visualization as well. In this cluster the top right movies were all horor and middle bottom were greatest hits. During this visualization we really know the clustering was working and there was further knowledge to be gained about their relationships.
 ![](img/Movies 1999-label-color-closeness-filter-none-spline-sizecloseness.png)
 
 ### Clusters formed by Duplicated Movie Data
 This graph is of the year 1998 only. We found that the clusters were due to movies being duplicated in the data with the same reviews.
 
 **Layout 1**
+Nodes Colored by modularity and sized by centrality. Part of the original dataset during investigation. The bottom green cluster served as the starting point to furhter investigation into the relationships within groups.
 ![](img/Movies 1998 - Circular.png)
 
-**Layout 2**
+**Initial Movie visualizations**
+Nodes are colored by centrality and layed out with edges made more prominent. The clusters of narger nodes were pushed toward the extremeties in order to highlight the smaller graphs in a attempt to find some structure.
+
 ![](img/Movies 1998.png)
 
 
