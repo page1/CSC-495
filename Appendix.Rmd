@@ -27,6 +27,8 @@ hist(description_1998$degree_dist,
        col = "blue")
 ```
 
+The degree distribution shows that most of the movies don't share reviewers with a large number of other movies.
+
 ## Degree Strength Distribution
 ```{r echo = F}
 hist(description_1998$degree_strength,
@@ -35,6 +37,8 @@ hist(description_1998$degree_strength,
        breaks = 100,
        col = "blue")
 ```
+
+The degree strength distribution shows that most movies do not receive many reviews from reviewers that also reviewed other movies.
 
 ## Eigenvector Centrality Distribution
 ```{r echo = F}
@@ -45,6 +49,8 @@ hist(description_1998$evcentrality,
        col = "blue")
 ```
 
+The eigenvector centrality distribution shows us that few movies are connected by reviewers to several other highly connected nodes. We can see a small spike that represents the few movies that break the trend and have shared reviewers with several other well connected movies.
+
 ## Transitivity Distribution
 ```{r echo = F}
 hist(description_1998$transitivity,
@@ -53,6 +59,8 @@ hist(description_1998$transitivity,
        breaks = 100,
        col = "blue")
 ```
+
+The spike in the transitivity distribution at 1 shows us that most of the neighbor movies are tightly connected. Due to the low degree of the network, these cliques are fairly small.
 
 # 2000 Analysis
 ## Node Edge Counts
@@ -69,6 +77,8 @@ hist(description_2000$degree_dist,
        col = "blue")
 ```
 
+The degree distribution shows that most of the movies don't share reviewers with a large number of other movies.
+
 ## Degree Strength Distribution
 ```{r echo = F}
 hist(description_2000$degree_strength,
@@ -77,6 +87,8 @@ hist(description_2000$degree_strength,
        breaks = 100,
        col = "blue")
 ```
+
+The degree strength distribution shows that most movies do not receive many reviews from reviewers that also reviewed other movies.
 
 ## Eigenvector Centrality Distribution
 ```{r echo = F}
@@ -87,6 +99,8 @@ hist(description_2000$evcentrality,
        col = "blue")
 ```
 
+The eigenvector centrality distribution shows us that few movies are connected by reviewers to several other highly connected movies. There are more highly connected movies in this data set than in the 1998-2000 set.
+
 ## Transitivity Distribution
 ```{r echo = F}
 hist(description_2000$transitivity,
@@ -95,6 +109,8 @@ hist(description_2000$transitivity,
        breaks = 100,
        col = "blue")
 ```
+
+The spike in the transitivity distribution at 1 shows us that most of the neighbor movies are tightly connected.
 
 # Compairison of 1998-1999 vs First 2000
 ## Degree Distribution Compairison
@@ -117,6 +133,8 @@ ggplot(data = degree_dist_join,
    ggtitle("Degree Density Compairison")
 ```
 
+The degree distribution of the 2000 data set has a much longer fatter tail, meaning more movies that have high degree.
+
 ## Degree Strength Distribution Compairison
 ```{r echo = F}
 degree_strength_join <- data.frame(year = 1998,
@@ -136,6 +154,8 @@ ggplot(data = degree_strength_join,
    ylab("Density") +
    ggtitle("Degree Strength Density Compairison")
 ```
+
+The degree strength distribution of the 2000 data set has a much longer fatter tail, meaning more movies that have more shared reviewers.
 
 ## Eigenvector Centrality Distribution Compairison
 ```{r echo = F}
@@ -157,6 +177,8 @@ ggplot(data = evcent_dist_join,
    ggtitle("Eigenvector Centrality Density Compairison")
 ```
 
+The eigenvector centrality distribution of the 2000 data set is shifted higher than the 1998-2000 data set. This is in line with the increased degree of this data set.
+
 ## Transitivity Distribution Compairison
 ```{r echo = F}
 transitivity_dist_join <- data.frame(year = 1998,
@@ -176,3 +198,19 @@ ggplot(data = transitivity_dist_join,
    ylab("Density") +
    ggtitle("Transitivity Density Compairison")
 ```
+
+The transitivity of the 2000 data set is slightly shifted higher, meaning that the network is forming more tightly connected groups.
+
+# Network Plots
+## 1998 - 2000 Projection of Movie Reviews
+Movie Nodes are sized by betweeness, edges represent shared movie reviewers reviews durring the years of 1998 & 1999. Movies that were not able to be connected to other movies by reviewers were not considered. Movie data had to be deduplicated to eliminate movie variations of the same content (DVD/VHS ...)
+![](data/Movies 1998 Size by Betweenness Color by Mod.png)
+
+## Sub-networks of 1998 - 2000 Movie Reviews
+Breaks out of graphs of the 1998 - 2000 data. Groups formed by modularity. Sizing and filtering same as previous.
+![](data/FullImageofNetwork.PNG)
+
+## Compairison between 1998 - 2000 & 2000
+Plot of the 1999-2000 projection, next to the projection of movie reviews taken from the year 2000. Notice the large increase in movies and edges.
+![](data/1998_1998Comparison.PNG)
+
