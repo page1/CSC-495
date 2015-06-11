@@ -4,6 +4,7 @@ output: html_document
 ---
 
 ```{r include=FALSE}
+library(ggplot2)
 source("analyze.R")
 projection_Rdata_file <- "data/movie_movie_projection.Rdata"
 load(projection_Rdata_file)
@@ -12,40 +13,37 @@ load(descriptive_Rdata_file)
 ```
 
 # 1998 & 2000 Analysis
-
-```{r}
+## Node Edge Counts
+```{r echo = F}
 summary(projection1998)
 ```
 
-```{r}
+## Degree Distribution
+```{r echo = F}
 hist(description_1998$degree_dist,
        main = "Degree Distribution",
        xlab = "Degree",
        breaks = 100)
 ```
 
-```{r}
+## Degree Strength Distribution
+```{r echo = F}
 hist(description_1998$degree_strength,
        main = "Degree Strength Distribution",
        xlab = "Degree Strength",
        breaks = 100)
 ```
 
-```{r}
+## Eigenvector Centrality Distribution
+```{r echo = F}
 hist(description_1998$evcentrality,
        main = "Eigenvector Centrality Distribution",
        xlab = "Eigenvector Centrality",
        breaks = 100)
 ```
 
-```{r}
-hist(description_1998$closeness,
-       main = "Closeness Distribution",
-       xlab = "Closeness",
-       breaks = 100)
-```
-
-```{r}
+## Transitivity Distribution
+```{r echo = F}
 hist(description_1998$transitivity,
        main = "Transitivity Distribution",
        xlab = "Transitivity",
@@ -53,42 +51,120 @@ hist(description_1998$transitivity,
 ```
 
 # 2000 Analysis
-
-```{r}
+## Node Edge Counts
+```{r echo = F}
 summary(projection2000)
 ```
 
-```{r}
+## Degree Distribution
+```{r echo = F}
 hist(description_2000$degree_dist,
        main = "Degree Distribution",
        xlab = "Degree",
        breaks = 100)
 ```
 
-```{r}
+## Degree Strength Distribution
+```{r echo = F}
 hist(description_2000$degree_strength,
        main = "Degree Strength Distribution",
        xlab = "Degree Strength",
        breaks = 100)
 ```
 
-```{r}
+## Eigenvector Centrality Distribution
+```{r echo = F}
 hist(description_2000$evcentrality,
        main = "Eigenvector Centrality Distribution",
        xlab = "Eigenvector Centrality",
        breaks = 100)
 ```
 
-```{r}
-hist(description_2000$closeness,
-       main = "Closeness Distribution",
-       xlab = "Closeness",
-       breaks = 100)
-```
-
-```{r}
+## Transitivity Distribution
+```{r echo = F}
 hist(description_2000$transitivity,
        main = "Transitivity Distribution",
        xlab = "Transitivity",
        breaks = 100)
+```
+
+# Compairison of 1998-1999 vs First 2000
+## Degree Distribution Compairison
+```{r echo = F}
+degree_dist_join <- data.frame(year = 1998,
+                                   degree = description_1998$degree_dist)
+degree_dist_join <- rbind(degree_dist_join,
+                              data.frame(year = 2000,
+                                         degree = description_2000$degree_dist))
+degree_dist_join$year <- as.factor(degree_dist_join$year)
+
+ggplot(data = degree_dist_join, 
+       aes(x = log(degree), y=..density.., fill = year)) +
+  geom_histogram(position="identity",
+                 colour = "black",
+                 binwidth=.5,
+                 alpha=0.4) +
+   xlab("Log(Degree)") +
+   ylab("Density") +
+   ggtitle("Degree Density Compairison")
+```
+
+## Degree Strength Distribution Compairison
+```{r echo = F}
+degree_strength_join <- data.frame(year = 1998,
+                                   strength = description_1998$degree_strength)
+degree_strength_join <- rbind(degree_strength_join,
+                              data.frame(year = 2000,
+                                         strength = description_2000$degree_strength))
+degree_strength_join$year <- as.factor(degree_strength_join$year)
+
+ggplot(data = degree_strength_join, 
+       aes(x = log(strength), y=..density.., fill = year)) +
+  geom_histogram(position="identity",
+                 colour = "black",
+                 binwidth=.5,
+                 alpha=0.4) +
+   xlab("Log(Degree Strength)") +
+   ylab("Density") +
+   ggtitle("Degree Strength Density Compairison")
+```
+
+## Eigenvector Centrality Distribution Compairison
+```{r echo = F}
+evcent_dist_join <- data.frame(year = 1998,
+                                   evcent = description_1998$evcentrality)
+evcent_dist_join <- rbind(evcent_dist_join,
+                              data.frame(year = 2000,
+                                         evcent = description_2000$evcentrality))
+evcent_dist_join$year <- as.factor(evcent_dist_join$year)
+
+ggplot(data = evcent_dist_join, 
+       aes(x = log(evcent), y=..density.., fill = year)) +
+  geom_histogram(position="identity",
+                 colour = "black",
+                 binwidth=.5,
+                 alpha=0.4) +
+   xlab("Log(Eigenvector Centrality)") +
+   ylab("Density") +
+   ggtitle("Eigenvector Centrality Density Compairison")
+```
+
+## Transitivity Distribution Compairison
+```{r echo = F}
+transitivity_dist_join <- data.frame(year = 1998,
+                                   transitivity = description_1998$transitivity)
+transitivity_dist_join <- rbind(transitivity_dist_join,
+                              data.frame(year = 2000,
+                                         transitivity = description_2000$transitivity))
+transitivity_dist_join$year <- as.factor(transitivity_dist_join$year)
+
+ggplot(data = transitivity_dist_join, 
+       aes(x = transitivity, y=..density.., fill = year)) +
+  geom_histogram(position="identity",
+                 colour = "black",
+                 binwidth=.1,
+                 alpha=0.4) +
+   xlab("Log(Transitivity)") +
+   ylab("Density") +
+   ggtitle("Transitivity Density Compairison")
 ```

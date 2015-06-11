@@ -12,7 +12,6 @@ compute_descriptive_stats <- function(graph){
   return(list(degree_dist = degree_dist,
               degree_strength = degree_strength,
               evcentrality = evcentrality,
-              closeness = closeness,
               transitivity = transitivity))
 }
 
