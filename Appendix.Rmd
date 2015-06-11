@@ -205,14 +205,17 @@ The transitivity of the 2000 data set is slightly shifted higher, meaning that t
 ## Production Quality Plots
 ### 1998 - 2000 Projection of Movie Reviews
 Movie Nodes are sized by betweeness, edges represent shared movie reviewers reviews durring the years of 1998 & 1999. Movies that were not able to be connected to other movies by reviewers were not considered. Movie data had to be deduplicated to eliminate movie variations of the same content (DVD/VHS ...)
+
 ![](img/Movies 1998 Size by Betweenness Color by Mod.png)
 
 ### Sub-networks of 1998 - 2000 Movie Reviews
 Breaks out of graphs of the 1998 - 2000 data. Groups formed by modularity. Sizing and filtering same as previous.
+
 ![](img/FullImageofNetwork.PNG)
 
 ### Compairison between 1998 - 2000 & 2000
 Plot of the 1999-2000 projection, next to the projection of movie reviews taken from the year 2000. Isolates removed. Notice the large increase in movies and edges.
+
 ![](img/1998_1998Comparison.PNG)
 
 ## Exploration Plots
