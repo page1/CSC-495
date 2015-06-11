@@ -232,7 +232,7 @@ Due to the large number of movies, in the early exploration we looked at graphs 
 ![](img/Movies 1999-label-color-closeness-filter-none-spline-sizecloseness.png)
 
 ### Clusters formed by Duplicated Movie Data
-This graph is of the year 1998 only. We found that the clusters were due to movies being duplicated in the data with the same revies.
+This graph is of the year 1998 only. We found that the clusters were due to movies being duplicated in the data with the same reviews.
 
 **Layout 1**
 ![](img/Movies 1998 - Circular.png)
