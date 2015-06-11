@@ -23,7 +23,8 @@ summary(projection1998)
 hist(description_1998$degree_dist,
        main = "Degree Distribution",
        xlab = "Degree",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 ## Degree Strength Distribution
@@ -31,7 +32,8 @@ hist(description_1998$degree_dist,
 hist(description_1998$degree_strength,
        main = "Degree Strength Distribution",
        xlab = "Degree Strength",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 ## Eigenvector Centrality Distribution
@@ -39,7 +41,8 @@ hist(description_1998$degree_strength,
 hist(description_1998$evcentrality,
        main = "Eigenvector Centrality Distribution",
        xlab = "Eigenvector Centrality",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 ## Transitivity Distribution
@@ -47,7 +50,8 @@ hist(description_1998$evcentrality,
 hist(description_1998$transitivity,
        main = "Transitivity Distribution",
        xlab = "Transitivity",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 # 2000 Analysis
@@ -61,7 +65,8 @@ summary(projection2000)
 hist(description_2000$degree_dist,
        main = "Degree Distribution",
        xlab = "Degree",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 ## Degree Strength Distribution
@@ -69,7 +74,8 @@ hist(description_2000$degree_dist,
 hist(description_2000$degree_strength,
        main = "Degree Strength Distribution",
        xlab = "Degree Strength",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 ## Eigenvector Centrality Distribution
@@ -77,7 +83,8 @@ hist(description_2000$degree_strength,
 hist(description_2000$evcentrality,
        main = "Eigenvector Centrality Distribution",
        xlab = "Eigenvector Centrality",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 ## Transitivity Distribution
@@ -85,7 +92,8 @@ hist(description_2000$evcentrality,
 hist(description_2000$transitivity,
        main = "Transitivity Distribution",
        xlab = "Transitivity",
-       breaks = 100)
+       breaks = 100,
+       col = "blue")
 ```
 
 # Compairison of 1998-1999 vs First 2000
