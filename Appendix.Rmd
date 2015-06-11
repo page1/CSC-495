@@ -212,7 +212,7 @@ Breaks out of graphs of the 1998 - 2000 data. Groups formed by modularity. Sizin
 ![](img/FullImageofNetwork.PNG)
 
 ### Compairison between 1998 - 2000 & 2000
-Plot of the 1999-2000 projection, next to the projection of movie reviews taken from the year 2000. Notice the large increase in movies and edges.
+Plot of the 1999-2000 projection, next to the projection of movie reviews taken from the year 2000. Isolates removed. Notice the large increase in movies and edges.
 ![](img/1998_1998Comparison.PNG)
 
 ## Exploration Plots
